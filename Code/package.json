@@ -13,7 +13,9 @@
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-typed": "^1.2.0",
     "recompose": "^0.30.0",
+    "typed.js": "^2.0.12",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

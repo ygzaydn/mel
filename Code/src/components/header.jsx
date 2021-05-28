@@ -8,7 +8,6 @@ import {
   MenuItem,
 } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
-import Background from "../assets/images/background.jpg";
 
 import { Link } from "react-router-dom";
 import { compose } from "recompose";
@@ -17,10 +16,8 @@ import Logo from "../assets/images/logo.png";
 
 const useStyles = () => ({
   headerGrid: {
-    height: (props) => (props.mode === "homepage" ? "60vh" : "8vh"),
+    height: "8vh",
     backgroundColor: "#D65DB1",
-    backgroundImage: (props) =>
-      props.mode === "homepage" ? `url(${Background})` : null,
     display: "flex",
     justifyContent: "space-around",
     padding: "2vh 0",
@@ -59,7 +56,7 @@ const Header = ({ classes, loggedUser, width, limit }) => {
     <Grid containter className={classes.headerGrid}>
       <Grid item xs={3} md={2} className={classes.headerLogo}>
         <Link to="/" style={{ textDecoration: "none" }}>
-          <img src={Logo} alt="Logo" className={classes.image} />
+          <img src={Logo} alt="Logo" />
         </Link>
       </Grid>
       <Grid item xs={9} md={6} className={classes.headerMenuTexts}>
@@ -80,10 +77,10 @@ const Header = ({ classes, loggedUser, width, limit }) => {
               variant="h6"
               aria-controls="simple-menu"
               aria-haspopup="true"
-              onClick={handleClick}
             >
               Hizmetlerimiz
             </Typography>
+
             <Menu
               id="simple-menu"
               anchorEl={anchorEl}
@@ -93,17 +90,17 @@ const Header = ({ classes, loggedUser, width, limit }) => {
             >
               <MenuItem onClick={handleClose}>
                 <Typography color="secondary" variant="h6">
-                  Hakkımızda1
+                  Hizmetlerimiz1
                 </Typography>
               </MenuItem>
               <MenuItem onClick={handleClose}>
                 <Typography color="secondary" variant="h6">
-                  Hakkımızda2
+                  Hizmetlerimiz2
                 </Typography>
               </MenuItem>
               <MenuItem onClick={handleClose}>
                 <Typography color="secondary" variant="h6">
-                  Hakkımızda3
+                  Hizmetlerimiz3
                 </Typography>
               </MenuItem>
             </Menu>

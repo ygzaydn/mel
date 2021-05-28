@@ -12,6 +12,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 const App = ({}) => {
   return (
     <Router>
+      <Header />
       <ThemeProvider theme={Theme}>
         <Switch>
           <Route path="/" exact>
