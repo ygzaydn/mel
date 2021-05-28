@@ -4,7 +4,7 @@ import {
   Grid,
   Breadcrumbs,
   Typography,
-  Menu,
+  Popper,
   MenuItem,
 } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
@@ -39,18 +39,24 @@ const useStyles = () => ({
       height: "max(8vh,60px)",
     },
   },
+  whiteText: {
+    color: "white",
+  },
 });
 
 const Header = ({ classes, loggedUser, width, limit }) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleClick = (event) => {
+    setAnchorEl(anchorEl ? null : event.currentTarget);
+  };
+
+  const open = Boolean(anchorEl);
+  const id = open ? "simple-popper" : undefined;
 
   return (
     <Grid containter className={classes.headerGrid}>
@@ -71,22 +77,23 @@ const Header = ({ classes, loggedUser, width, limit }) => {
               Hakkımızda
             </Typography>
           </Link>
-          <Link to="/services" style={{ textDecoration: "none" }}>
+          <>
             <Typography
               className={classes.whiteText}
               variant="h6"
-              aria-controls="simple-menu"
+              aria-describedby={id}
               aria-haspopup="true"
+              onClick={handleClick}
             >
               Hizmetlerimiz
             </Typography>
 
-            <Menu
-              id="simple-menu"
+            <Popper
+              aria-describedby={id}
               anchorEl={anchorEl}
-              keepMounted
               open={Boolean(anchorEl)}
               onClose={handleClose}
+              style={{ backgroundColor: "white" }}
             >
               <MenuItem onClick={handleClose}>
                 <Typography color="secondary" variant="h6">
@@ -103,8 +110,8 @@ const Header = ({ classes, loggedUser, width, limit }) => {
                   Hizmetlerimiz3
                 </Typography>
               </MenuItem>
-            </Menu>
-          </Link>
+            </Popper>
+          </>
           <Link to="/contact" style={{ textDecoration: "none" }}>
             <Typography className={classes.whiteText} variant="h6">
               İletişim

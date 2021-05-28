@@ -1,3 +1,4 @@
 import Header from "./header";
+import WhatsappFooter from "./whatsappFooter";
 
-export { Header };
+export { Header, WhatsappFooter };
