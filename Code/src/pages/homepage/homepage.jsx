@@ -62,8 +62,9 @@ const useStyles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    margin: "2vh 0",
     "& img": {
-      maxWidth: "20rem",
+      maxWidth: "25rem",
     },
   },
   galleryGrid: {
@@ -82,8 +83,9 @@ const useStyles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
+    marginBottom: "2vh",
     "& img": {
-      maxWidth: "25rem",
+      maxWidth: "30rem",
     },
   },
   typedMiniGrid: {
@@ -101,6 +103,7 @@ const useStyles = {
     margin: "5vh 0 ",
     height: "40vh",
     backgroundColor: "#845EC2",
+    textAlign: "center",
   },
 
   thirdSection: {
@@ -108,10 +111,17 @@ const useStyles = {
     margin: "5vh 0 ",
     padding: "5vh 0",
     minHeight: "40vh",
+    maxWidth: "1600px",
   },
 
   servicesGrid: {
     marginTop: "2vh",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  firstSection: {
+    maxWidth: "1600px",
   },
 };
 
@@ -130,10 +140,10 @@ const Homepage = ({ classes, limit, width }) => {
       </Grid>
 
       <Grid container className={classes.firstSection}>
-        <Grid item xs={6} className={classes.cardGrid}>
+        <Grid item xs={12} md={6} className={classes.cardGrid}>
           <img src={CardImage} alt="card" />
         </Grid>
-        <Grid item xs={6} className={classes.servicesGrid}>
+        <Grid item xs={12} md={6} className={classes.servicesGrid}>
           <Typography
             color="primary"
             variant="h3"
