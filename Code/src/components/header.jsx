@@ -57,61 +57,68 @@ const useStyles = () => ({
       backgroundColor: "#845EC2",
     },
   },
+  headerSemi: {
+    maxWidth: "1600px",
+    display: "flex",
+    justifyContent: "space-around",
+  },
 });
 
 const Header = ({ classes, loggedUser, width, limit }) => {
   return (
     <Grid containter className={classes.headerGrid}>
-      <Grid item xs={6} md={2} className={classes.headerLogo}>
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <img src={Logo} alt="Logo" />
-        </Link>
-      </Grid>
-      <Grid item xs={6} className={classes.headerMenu}>
-        <Grid item xs={12}>
-          <Grid item xs={12} className={classes.headerMenuTexts}>
-            <Breadcrumbs separator="|" aria-label="breadcrumb">
-              <Link to="/" style={{ textDecoration: "none" }}>
-                <Typography
-                  color="primary"
-                  variant="h6"
-                  className={classes.menuItem}
-                >
-                  Anasayfa
-                </Typography>
-              </Link>
-              <Link to="/hakkimizda" style={{ textDecoration: "none" }}>
-                <Typography
-                  color="primary"
-                  variant="h6"
-                  className={classes.menuItem}
-                >
-                  Hakkımızda
-                </Typography>
-              </Link>
-              <Link to="/hizmetlerimiz" style={{ textDecoration: "none" }}>
-                <Typography
-                  color="primary"
-                  variant="h6"
-                  className={classes.menuItem}
-                >
-                  Hizmetlerimiz
-                </Typography>
-              </Link>
+      <Grid item xs={12} className={classes.headerSemi}>
+        <Grid item xs={6} md={2} className={classes.headerLogo}>
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <img src={Logo} alt="Logo" />
+          </Link>
+        </Grid>
+        <Grid item xs={6} className={classes.headerMenu}>
+          <Grid item xs={12}>
+            <Grid item xs={12} className={classes.headerMenuTexts}>
+              <Breadcrumbs separator="|" aria-label="breadcrumb">
+                <Link to="/" style={{ textDecoration: "none" }}>
+                  <Typography
+                    color="primary"
+                    variant="h6"
+                    className={classes.menuItem}
+                  >
+                    Anasayfa
+                  </Typography>
+                </Link>
+                <Link to="/hakkimizda" style={{ textDecoration: "none" }}>
+                  <Typography
+                    color="primary"
+                    variant="h6"
+                    className={classes.menuItem}
+                  >
+                    Hakkımızda
+                  </Typography>
+                </Link>
+                <Link to="/hizmetlerimiz" style={{ textDecoration: "none" }}>
+                  <Typography
+                    color="primary"
+                    variant="h6"
+                    className={classes.menuItem}
+                  >
+                    Hizmetlerimiz
+                  </Typography>
+                </Link>
 
-              <Link to="/iletisim" style={{ textDecoration: "none" }}>
-                <Typography
-                  color="primary"
-                  variant="h6"
-                  className={classes.menuItem}
-                >
-                  İletişim
-                </Typography>
-              </Link>
-            </Breadcrumbs>
-          </Grid>
-          <Grid item xs={12} className={classes.socialMediaBigGrid}>
-            <SocialmediaGrid color="#845EC2" />
+                <Link to="/iletisim" style={{ textDecoration: "none" }}>
+                  <Typography
+                    color="primary"
+                    variant="h6"
+                    className={classes.menuItem}
+                  >
+                    İletişim
+                  </Typography>
+                </Link>
+              </Breadcrumbs>
+            </Grid>
+            <Grid item xs={12} className={classes.socialMediaBigGrid}>
+              <SocialmediaGrid color="#845EC2" />
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
