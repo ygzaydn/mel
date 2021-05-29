@@ -1,4 +1,4 @@
-import { Header, WhatsappFooter } from "./components";
+import { Header, Footer, WhatsappFooter } from "./components";
 import { ThemeProvider } from "@material-ui/styles";
 import Theme from "./theme/theme.jsx";
 
@@ -21,6 +21,7 @@ const App = ({}) => {
         </Switch>
       </ThemeProvider>
       <WhatsappFooter />
+      <Footer />
     </Router>
   );
 };

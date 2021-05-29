@@ -1,29 +1,26 @@
 import React, { useState } from "react";
 
-import {
-  Grid,
-  Breadcrumbs,
-  Typography,
-  Popper,
-  MenuItem,
-} from "@material-ui/core";
+import { Grid, Breadcrumbs, Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 
 import { Link } from "react-router-dom";
 import { compose } from "recompose";
 import { withWindowConsumer } from "../contexts/window/consumer";
-import Logo from "../assets/images/logo.png";
+import Logo from "../assets/images/logo.jpeg";
+
+import { SocialmediaGrid } from "../components";
 
 const useStyles = () => ({
   headerGrid: {
     height: "8vh",
-    backgroundColor: "#D65DB1",
+    backgroundColor: "white",
     display: "flex",
     justifyContent: "space-around",
     padding: "2vh 0",
     alignItems: "center",
   },
   headerMenuTexts: {
+    marginBottom: "1rem",
     display: "flex",
     justifyContent: (props) =>
       props.width < props.limit ? "flex-end" : "space-around",
@@ -35,6 +32,8 @@ const useStyles = () => ({
   },
   headerLogo: {
     padding: "1vh 0",
+    display: "flex",
+    justifyContent: "center",
     "& img": {
       height: "max(8vh,60px)",
     },
@@ -42,82 +41,79 @@ const useStyles = () => ({
   whiteText: {
     color: "white",
   },
+  headerMenu: {
+    display: "flex",
+  },
+
+  socialMediaBigGrid: {
+    display: "flex",
+    justifyContent: "center",
+  },
+  menuItem: {
+    transition: "all 0.5s ",
+    padding: "3px ",
+    "&:hover": {
+      color: "white",
+      backgroundColor: "#845EC2",
+    },
+  },
 });
 
 const Header = ({ classes, loggedUser, width, limit }) => {
-  const [anchorEl, setAnchorEl] = useState(null);
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handleClick = (event) => {
-    setAnchorEl(anchorEl ? null : event.currentTarget);
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? "simple-popper" : undefined;
-
   return (
     <Grid containter className={classes.headerGrid}>
-      <Grid item xs={3} md={2} className={classes.headerLogo}>
+      <Grid item xs={6} md={2} className={classes.headerLogo}>
         <Link to="/" style={{ textDecoration: "none" }}>
           <img src={Logo} alt="Logo" />
         </Link>
       </Grid>
-      <Grid item xs={9} md={6} className={classes.headerMenuTexts}>
-        <Breadcrumbs separator="|" aria-label="breadcrumb">
-          <Link to="/" style={{ textDecoration: "none" }}>
-            <Typography className={classes.whiteText} variant="h6">
-              Anasayfa
-            </Typography>
-          </Link>
-          <Link to="/about" style={{ textDecoration: "none" }}>
-            <Typography className={classes.whiteText} variant="h6">
-              Hakkımızda
-            </Typography>
-          </Link>
-          <>
-            <Typography
-              className={classes.whiteText}
-              variant="h6"
-              aria-describedby={id}
-              aria-haspopup="true"
-              onClick={handleClick}
-            >
-              Hizmetlerimiz
-            </Typography>
+      <Grid item xs={6} className={classes.headerMenu}>
+        <Grid item xs={12}>
+          <Grid item xs={12} className={classes.headerMenuTexts}>
+            <Breadcrumbs separator="|" aria-label="breadcrumb">
+              <Link to="/" style={{ textDecoration: "none" }}>
+                <Typography
+                  color="primary"
+                  variant="h6"
+                  className={classes.menuItem}
+                >
+                  Anasayfa
+                </Typography>
+              </Link>
+              <Link to="/hakkimizda" style={{ textDecoration: "none" }}>
+                <Typography
+                  color="primary"
+                  variant="h6"
+                  className={classes.menuItem}
+                >
+                  Hakkımızda
+                </Typography>
+              </Link>
+              <Link to="/hizmetlerimiz" style={{ textDecoration: "none" }}>
+                <Typography
+                  color="primary"
+                  variant="h6"
+                  className={classes.menuItem}
+                >
+                  Hizmetlerimiz
+                </Typography>
+              </Link>
 
-            <Popper
-              aria-describedby={id}
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
-              style={{ backgroundColor: "white" }}
-            >
-              <MenuItem onClick={handleClose}>
-                <Typography color="secondary" variant="h6">
-                  Hizmetlerimiz1
+              <Link to="/iletisim" style={{ textDecoration: "none" }}>
+                <Typography
+                  color="primary"
+                  variant="h6"
+                  className={classes.menuItem}
+                >
+                  İletişim
                 </Typography>
-              </MenuItem>
-              <MenuItem onClick={handleClose}>
-                <Typography color="secondary" variant="h6">
-                  Hizmetlerimiz2
-                </Typography>
-              </MenuItem>
-              <MenuItem onClick={handleClose}>
-                <Typography color="secondary" variant="h6">
-                  Hizmetlerimiz3
-                </Typography>
-              </MenuItem>
-            </Popper>
-          </>
-          <Link to="/contact" style={{ textDecoration: "none" }}>
-            <Typography className={classes.whiteText} variant="h6">
-              İletişim
-            </Typography>
-          </Link>
-        </Breadcrumbs>
+              </Link>
+            </Breadcrumbs>
+          </Grid>
+          <Grid item xs={12} className={classes.socialMediaBigGrid}>
+            <SocialmediaGrid color="#845EC2" />
+          </Grid>
+        </Grid>
       </Grid>
     </Grid>
   );

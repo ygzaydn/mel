@@ -6,55 +6,17 @@ import { withStyles } from "@material-ui/core/styles";
 import Typed from "react-typed";
 
 import CardImage from "../../assets/images/card.jpeg";
+import Hexagonal from "../../assets/images/hexagonal.jpeg";
+import { Link } from "react-router-dom";
 
 import { compose } from "recompose";
 import { withWindowConsumer } from "../../contexts/window/consumer";
-import InstagramIcon from "@material-ui/icons/Instagram";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import FacebookIcon from "@material-ui/icons/Facebook";
+import HomepageBackground from "../../assets/images/homepagebackground.jpg";
 
-const useStyles = {
-  typedGrid: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "35vh",
-    backgroundImage: "linear-gradient(#D65DB1, white)",
-    fontFamily: "'Dancing Script', cursive",
-    "& span": {
-      color: "black",
-      fontSize: "4rem",
-      fontFamily: "'Dancing Script', cursive",
-    },
-  },
-  cardGrid: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    height: "45vh",
-    "& img": {
-      maxWidth: "25rem",
-    },
-  },
-  socialMediaGrid: {
-    position: "absolute",
-    bottom: "85%",
-    left: "75%",
-    border: "2px solid black",
-    display: "flex",
-    width: "15vw",
-    justifyContent: "space-around",
-    height: "5vh",
-    alignItems: "center",
-    "& svg": {
-      color: "black",
-      cursor: "pointer",
-    },
-  },
-  secondSection: {
-    height: "20vh",
-  },
-};
+import images from "../../components/galleryImageGetter";
+
+import ImageGallery from "react-image-gallery";
+import "react-image-gallery/styles/css/image-gallery.css";
 
 const services = [
   "Lazer Epilasyon",
@@ -76,20 +38,94 @@ const services = [
   "Kaş / Bıyık Alımı",
 ];
 
+const myImages = images.map((el) => ({ original: el }));
+
+const useStyles = {
+  typedGrid: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "flex-end",
+    height: "55vh",
+    backgroundImage: `url(${HomepageBackground})`,
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    fontFamily: "'Dancing Script', cursive",
+    "-webkit-box-shadow": "inset 0px -15vh 20px 0px rgba(0,0,0,0.78)",
+    "box-shadow": "inset 0px -15vh 20px 0px rgba(0,0,0,0.78)",
+    "& span": {
+      color: "#845EC2",
+      fontSize: "4rem",
+      fontFamily: "'Dancing Script', cursive",
+    },
+  },
+  cardGrid: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    "& img": {
+      maxWidth: "20rem",
+    },
+  },
+  galleryGrid: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+
+    "& img": {
+      height: "30rem",
+      maxWidth: "30rem",
+    },
+  },
+
+  hexagonalGrid: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    "& img": {
+      maxWidth: "25rem",
+    },
+  },
+  typedMiniGrid: {
+    display: "flex",
+    alignItems: "center",
+    height: "15vh",
+    padding: "0 5vw",
+  },
+
+  secondSection: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-evenly",
+    padding: "10vh 0",
+    margin: "5vh 0 ",
+    height: "40vh",
+    backgroundColor: "#845EC2",
+  },
+
+  thirdSection: {
+    display: "flex",
+    margin: "5vh 0 ",
+    padding: "5vh 0",
+    minHeight: "40vh",
+  },
+
+  servicesGrid: {
+    marginTop: "2vh",
+  },
+};
+
 const Homepage = ({ classes, limit, width }) => {
   return (
     <Grid container justify="center" className={classes.homepageContainer}>
       <Grid item xs={12} className={classes.typedGrid}>
-        <Typed
-          strings={["Güzelliğinize güzellik katın..."]}
-          typeSpeed={100}
-          backSpeed={100}
-          loop
-        />
-        <Grid item xs={4} className={classes.socialMediaGrid}>
-          <InstagramIcon />
-          <FacebookIcon />
-          <TwitterIcon />
+        <Grid item xs={12} className={classes.typedMiniGrid}>
+          <Typed
+            strings={["Güzelliğinize güzellik katın..."]}
+            typeSpeed={100}
+            backSpeed={100}
+            loop
+          />
         </Grid>
       </Grid>
 
@@ -100,13 +136,14 @@ const Homepage = ({ classes, limit, width }) => {
         <Grid item xs={6} className={classes.servicesGrid}>
           <Typography
             color="primary"
-            variant="h4"
+            variant="h3"
             gutterBottom
             style={{
               marginBottom: "2vh",
               borderBottom: "2px solid lightgray",
               width: "45%",
               textAlign: "center",
+              padding: "2vh 0",
             }}
           >
             Hizmetlerimiz
@@ -116,6 +153,15 @@ const Homepage = ({ classes, limit, width }) => {
               &bull; {el}
             </Typography>
           ))}
+          <Link to="/hizmetlerimiz" style={{ textDecoration: "none" }}>
+            <Typography
+              color="secondary"
+              variant="h6"
+              style={{ marginTop: "1vh" }}
+            >
+              Tüm hizmetlerimiz
+            </Typography>
+          </Link>
         </Grid>
       </Grid>
       <Grid
@@ -124,9 +170,41 @@ const Homepage = ({ classes, limit, width }) => {
         alignItems="center"
         className={classes.secondSection}
       >
-        <Typography color="primary" variant="h2">
+        <Typography color="error" variant="h2">
+          İzmir Mell Güzellik Merkezi
+        </Typography>
+        <Typography color="error" variant="h6">
           En iyi hizmet ve ücret garantisiyle...
         </Typography>
+      </Grid>
+      <Grid
+        container
+        justify="center"
+        alignItems="center"
+        className={classes.thirdSection}
+      >
+        <Grid item xs={12} md={6} className={classes.hexagonalGrid}>
+          <img src={Hexagonal} alt="hexagonal" />
+        </Grid>
+        <Grid item xs={12} md={6} className={classes.galleryGrid}>
+          <ImageGallery
+            showThumbnails={false}
+            showFullscreenButton={false}
+            showPlayButton={false}
+            autoPlay
+            showBullets
+            items={myImages}
+          />
+          <Link to="/" style={{ textDecoration: "none" }}>
+            <Typography
+              color="secondary"
+              variant="h6"
+              style={{ marginTop: "5vh" }}
+            >
+              Tüm galeriye ulaşmak için tıklayın
+            </Typography>
+          </Link>
+        </Grid>
       </Grid>
     </Grid>
   );
