@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Grid, Breadcrumbs, Typography } from "@material-ui/core";
+import { Grid, Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 
 import { Link } from "react-router-dom";
@@ -14,14 +14,13 @@ const useStyles = () => ({
     background: "linear-gradient(#845EC2, black)",
     borderTop: "2px solid lightgray",
     display: "flex",
-    height: "50vh",
-    padding: "5vh 0",
+    minHeight: "50vh",
+    padding: "10vh 0",
     justifyContent: "center",
   },
   footerInfo: {
-    margin: "1vh 0",
     padding: "1vh 3vw",
-    width: "75%",
+    width: (props) => (props.width < props.limit ? null : "75%"),
     margin: "auto",
     minHeight: "50%",
     display: "flex",
@@ -30,11 +29,10 @@ const useStyles = () => ({
     alignItems: "center",
   },
   socialMediaFooterGrid: {
-    margin: "1vh 0",
     padding: "1vh 3vw",
     width: "75%",
     margin: "auto",
-    minHeight: "50%",
+    minHeight: (props) => (props.width < props.limit ? null : "50%"),
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -42,6 +40,7 @@ const useStyles = () => ({
   footerSemi: {
     display: "flex",
     maxWidth: "1600px",
+    flexDirection: (props) => (props.width < props.limit ? "column" : null),
   },
 });
 
@@ -49,7 +48,7 @@ const Footer = ({ classes }) => {
   return (
     <Grid containter className={classes.footerGrid}>
       <Grid item xs={12} className={classes.footerSemi}>
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <Grid item xs={12} className={classes.footerInfo}>
             <Typography
               color="error"
@@ -78,7 +77,7 @@ const Footer = ({ classes }) => {
             <InformationGrid color="white" />
           </Grid>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} md={6}>
           <Grid item xs={12} className={classes.footerInfo}>
             <Typography
               color="error"

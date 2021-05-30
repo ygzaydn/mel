@@ -17,7 +17,7 @@ const useStyles = () => ({
     display: "flex",
     left: "5vw",
     bottom: 0,
-    width: "max(15vw,100px)",
+    width: "max(15vw,225px)",
     background: "green",
     cursor: "pointer",
     "& svg": {

@@ -54,7 +54,7 @@ const useStyles = {
     "box-shadow": "inset 0px -15vh 20px 0px rgba(0,0,0,0.78)",
     "& span": {
       color: "#845EC2",
-      fontSize: "4rem",
+      fontSize: (props) => (props.width < props.limit ? "1.5rem" : "4rem"),
       fontFamily: "'Dancing Script', cursive",
     },
   },
@@ -64,7 +64,7 @@ const useStyles = {
     alignItems: "center",
     margin: "2vh 0",
     "& img": {
-      maxWidth: "25rem",
+      maxWidth: "min(90%,25rem)",
     },
   },
   galleryGrid: {
@@ -85,13 +85,13 @@ const useStyles = {
     alignItems: "center",
     marginBottom: "2vh",
     "& img": {
-      maxWidth: "30rem",
+      maxWidth: "min(100%,30rem)",
     },
   },
   typedMiniGrid: {
     display: "flex",
     alignItems: "center",
-    height: "15vh",
+    minHeight: "15vh",
     padding: "0 5vw",
   },
 
@@ -101,7 +101,7 @@ const useStyles = {
     justifyContent: "space-evenly",
     padding: "10vh 0",
     margin: "5vh 0 ",
-    height: "40vh",
+    minHeight: "40vh",
     backgroundColor: "#845EC2",
     textAlign: "center",
   },
@@ -151,7 +151,6 @@ const Homepage = ({ classes, limit, width }) => {
             style={{
               marginBottom: "2vh",
               borderBottom: "2px solid lightgray",
-              width: "45%",
               textAlign: "center",
               padding: "2vh 0",
             }}
@@ -205,7 +204,7 @@ const Homepage = ({ classes, limit, width }) => {
             showBullets
             items={myImages}
           />
-          <Link to="/" style={{ textDecoration: "none" }}>
+          <Link to="/galeri" style={{ textDecoration: "none" }}>
             <Typography
               color="secondary"
               variant="h6"
