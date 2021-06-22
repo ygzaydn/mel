@@ -7,7 +7,7 @@ export const withWindowProvider = (Component) => {
         const getDimensions = () => {
             const w = window;
             const d = document;
-            const limit = 600;
+            const limit = 1140;
             const { documentElement } = d;
             const body = d.getElementsByTagName("body")[0];
             const width =

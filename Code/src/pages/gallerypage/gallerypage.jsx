@@ -4,7 +4,6 @@ import { Grid, Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 
 import Typed from "react-typed";
-import { Link } from "react-router-dom";
 
 import { compose } from "recompose";
 import { withWindowConsumer } from "../../contexts/window/consumer";
@@ -14,27 +13,29 @@ import images from "../../components/galleryImageGetter";
 
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
+import { ParallaxBanner } from "react-scroll-parallax";
+
 
 const myImages = images.map((el) => ({ original: el }));
 
 const useStyles = {
-  typedGrid: {
+  typedDiv: {
+    position: "absolute",
+    height: "100%",
+    width: "100%",
     display: "flex",
     justifyContent: "center",
     alignItems: "flex-end",
-    height: "55vh",
-    backgroundImage: `url(${GallerypageBackground})`,
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    fontFamily: "'Dancing Script', cursive",
+    textAlign: "center",
     "-webkit-box-shadow": "inset 0px -15vh 20px 0px rgba(0,0,0,0.78)",
     "box-shadow": "inset 0px -15vh 20px 0px rgba(0,0,0,0.78)",
     "& span": {
-      color: "#845EC2",
-      fontSize: (props) => (props.width < props.limit ? "1.5rem" : "4rem"),
-      fontFamily: "'Dancing Script', cursive",
+        color: "#845EC2",
+        fontSize: (props) =>
+            props.width < props.limit ? "1.5rem" : "4rem",
+        fontFamily: "'Dancing Script', cursive",
     },
-  },
+},
 
   galleryGrid: {
     margin: "5vh 0",
@@ -66,11 +67,24 @@ const useStyles = {
 const Gallerypage = ({ classes, limit, width }) => {
   return (
     <Grid container justify="center" className={classes.homepageContainer}>
-      <Grid item xs={12} className={classes.typedGrid}>
-        <Grid item xs={12} className={classes.typedMiniGrid}>
-          <Typed strings={["Galeri"]} typeSpeed={100} backSpeed={100} loop />
-        </Grid>
-      </Grid>
+       <ParallaxBanner
+                    className="your-class"
+                    layers={[
+                        {
+                            image: GallerypageBackground,
+                            amount: 0.5,
+                        },
+                    ]}
+                    style={{
+                        height: "55vh",
+                    }}
+                >
+                    <div className={classes.typedDiv}>
+                    <Typed strings={["Galeri"]} typeSpeed={100} backSpeed={100} loop />
+
+                    </div>
+                </ParallaxBanner>
+
       <Grid item xs={6} md={6} className={classes.gallerypageTitle}>
         <Typography color="primary" variant={width < limit ? "h4" : "h6"}>
           Galeri

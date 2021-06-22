@@ -15,6 +15,7 @@ const useStyles = ({ color }) => ({
     border: (props) => `2px solid ${props.color}`,
     padding: "2vh",
     width: "15vw",
+    minWidth:'250px',
     display: "flex",
     justifyContent: "space-around",
     height: "2rem",

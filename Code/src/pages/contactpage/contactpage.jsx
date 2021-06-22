@@ -1,11 +1,9 @@
 import React from "react";
 
-import { Grid, Typography } from "@material-ui/core";
+import { Grid } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 
 import Typed from "react-typed";
-
-import { Link } from "react-router-dom";
 
 import { compose } from "recompose";
 import { withWindowConsumer } from "../../contexts/window/consumer";
@@ -41,12 +39,12 @@ const useStyles = {
   },
   contactPageFirstSection: {
     maxWidth: "1800px",
-    display: "flex",
     justifyContent: "center",
     alignItems: "center",
     margin: "5vh 0 10vh 0",
-    display: (props) => (props.width < props.limit ? null : "flex"),
+    display: (props) => (props.width < props.limit ? "flex" : "flex"),
     padding: "0 15vw",
+    flexDirection: props => props.width < props.limit ? "column" : null
   },
   aboutpageFirstSectionTitle: {
     textAlign: "center",
@@ -70,7 +68,7 @@ const Contactpage = ({ classes, limit, width }) => {
         </Grid>
       </Grid>
       <Grid item xs={12} className={classes.contactPageFirstSection}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={6} style={{display:'flex', justifyContent:'center', alignItems:'center', flexDirection:'column'}}>
           <Grid item xs={12} className={classes.logoSection}>
             <img src={Logo} alt="logo" />
           </Grid>

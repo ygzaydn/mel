@@ -5,6 +5,7 @@ import Theme from "./theme/theme.jsx";
 import { compose } from "recompose";
 import { withWindowProvider } from "./contexts/window/provider";
 import Firebase, { FirebaseContext } from "./firebase/index";
+import "normalize.css/normalize.css";
 
 import {
     Homepage,

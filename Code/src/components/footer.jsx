@@ -17,6 +17,7 @@ const useStyles = () => ({
     minHeight: "50vh",
     padding: "10vh 0",
     justifyContent: "center",
+    alignItems:'center',
   },
   footerInfo: {
     padding: "1vh 3vw",
@@ -39,6 +40,8 @@ const useStyles = () => ({
   },
   footerSemi: {
     display: "flex",
+    justifyContent:'center',
+    alignItems:'center',
     maxWidth: "1600px",
     flexDirection: (props) => (props.width < props.limit ? "column" : null),
   },
@@ -46,7 +49,7 @@ const useStyles = () => ({
 
 const Footer = ({ classes }) => {
   return (
-    <Grid containter className={classes.footerGrid}>
+    <Grid container className={classes.footerGrid} justify="center" alignItems="center">
       <Grid item xs={12} className={classes.footerSemi}>
         <Grid item xs={12} md={6}>
           <Grid item xs={12} className={classes.footerInfo}>

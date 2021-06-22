@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 code {
@@ -14,4 +15,8 @@ code {
 
 * {
   font-family: "Open Sans Condensed", sans-serif;
+}
+
+html, body, #root, .App {
+  height: 100vh;
 }

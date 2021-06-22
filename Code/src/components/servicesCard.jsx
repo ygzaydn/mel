@@ -1,6 +1,6 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
-import { Grid, Typography, TextField, Button } from "@material-ui/core";
+import { Grid, Typography, Button } from "@material-ui/core";
 
 import { Link } from "react-router-dom";
 import { compose } from "recompose";
@@ -11,12 +11,12 @@ const useStyles = () => ({
   contactform: {
     background: "white",
     border: "2px solid lightgray",
-    padding: "2rem",
+    padding: "1.5rem 1rem",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-around",
     alignItems: "center",
-    minHeight: "35vh",
+    minHeight: "350px",
     margin: "2vh",
   },
   image: {
@@ -26,27 +26,36 @@ const useStyles = () => ({
 });
 
 const ServicesCard = ({ classes, item }) => (
-  <Grid item sm={5} md={3} className={classes.contactform} key={item}>
+  <Grid item sm={5} md={3} className={classes.contactform} key={item.title} style={{textAlign:'center'}}>
     <Grid item xs={12}>
       <img src={myImage} alt={item} className={classes.image} />
     </Grid>
 
-    <Grid item xs={12}>
-      <Typography color="primary" variant="h5">
-        {item}
+    <Grid item xs={12} style={{marginTop:'0.5rem', marginBottom:'0.5rem' }}>
+      <Typography color="primary" variant="h6">
+        {item.title}
       </Typography>
     </Grid>
-    <Grid item xs={12}>
-      <Typography color="primary" variant="subtitle1">
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book.
+    <Grid item xs={12} key={item.description1} style={{marginTop:'0.2rem', marginBottom:'0.2rem' }}>
+      <Typography color="primary" variant="subtitle2">
+       {item.description1}
       </Typography>
     </Grid>
 
-    <Grid item xs={12} md={7}>
-      <Link to="/iletisim" style={{ textDecoration: "none" }}>
+    <Grid item xs={12} key={item.description2} style={{marginTop:'0.2rem', marginBottom:'0.2rem' }}>
+      <Typography color="primary" variant="subtitle2">
+       {item.description2}
+      </Typography>
+    </Grid>
+
+    <Grid item xs={12} key={item.description3} style={{marginTop:'0.2rem', marginBottom:'0.2rem' }}>
+      <Typography color="primary" variant="subtitle2">
+       {item.description3}
+      </Typography>
+    </Grid>
+
+    <Grid item xs={12} md={7} style={{marginTop:'2rem' }}>
+      <Link to="/iletisim" style={{ textDecoration: "none"}}>
         <Button variant="contained" color="primary">
           Detaylı bilgi için bize ulaşın
         </Button>
