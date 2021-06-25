@@ -30,7 +30,7 @@ const App = ({}) => {
                 <Header />
                 <ThemeProvider theme={Theme}>
                     <Switch>
-                        <Route path="/anasayfa" exact>
+                        <Route path="/" exact>
                             <Homepage />
                         </Route>
                         <Route path="/hakkimizda" exact>
@@ -47,9 +47,6 @@ const App = ({}) => {
                         </Route>
                         <Route path="/admin" exact>
                             <Adminpage />
-                        </Route>
-                        <Route path="/">
-                            <Redirect to="/anasayfa" />
                         </Route>
                     </Switch>
                 </ThemeProvider>

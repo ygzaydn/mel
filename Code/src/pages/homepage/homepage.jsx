@@ -17,7 +17,6 @@ import images from "../../components/galleryImageGetter";
 
 import ImageGallery from "react-image-gallery";
 import "react-image-gallery/styles/css/image-gallery.css";
-import { ParallaxBanner } from "react-scroll-parallax";
 
 const services = [
     "Lazer Epilasyon",
@@ -42,6 +41,31 @@ const services = [
 const myImages = images.map((el) => ({ original: el }));
 
 const useStyles = {
+    typedGrid: {
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "flex-end",
+        height: "55vh",
+        backgroundImage: `url(${HomepageBackground})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        fontFamily: "'Dancing Script', cursive",
+        "-webkit-box-shadow": "inset 0px -15vh 20px 0px rgba(0,0,0,0.78)",
+        "box-shadow": "inset 0px -15vh 20px 0px rgba(0,0,0,0.78)",
+        "& span": {
+            color: "#845EC2",
+            fontSize: (props) =>
+                props.width < props.limit ? "1.5rem" : "4rem",
+            fontFamily: "'Dancing Script', cursive",
+        },
+    },
+    typedMiniGrid: {
+        display: "flex",
+        alignItems: "center",
+        height: "15vh",
+        padding: "0 5vw",
+    },
     cardGrid: {
         display: "flex",
         justifyContent: "center",
@@ -70,25 +94,6 @@ const useStyles = {
         marginBottom: "2vh",
         "& img": {
             maxWidth: "min(100%,30rem)",
-        },
-    },
-    typedDiv: {
-        position: "absolute",
-        height: "100%",
-        width: "100%",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "flex-end",
-        textAlign: "center",
-        fontFamily: "'Dancing Script', cursive",
-        "-webkit-box-shadow": "inset 0px -15vh 20px 0px rgba(0,0,0,0.78)",
-        "box-shadow": "inset 0px -15vh 20px 0px rgba(0,0,0,0.78)",
-
-        "& span": {
-            color: "#845EC2",
-            fontSize: (props) =>
-                props.width < props.limit ? "1.5rem" : "4rem",
-            fontFamily: "'Dancing Script', cursive",
         },
     },
 
@@ -126,28 +131,14 @@ const Homepage = ({ classes, limit, width }) => {
     return (
         <Grid container justify="center" className={classes.homepageContainer}>
             <Grid item xs={12} className={classes.typedGrid}>
-                <ParallaxBanner
-                    className="your-class"
-                    layers={[
-                        {
-                            image: HomepageBackground,
-                            amount: 0.5,
-                        },
-                    ]}
-                    style={{
-                        height: "55vh",
-                    }}
-                >
-                    <div className={classes.typedDiv}>
-                        <Typed
-                            strings={["Güzelliğinize güzellik katın..."]}
-                            typeSpeed={100}
-                            backSpeed={100}
-                            loop
-                        />
-                    </div>
-                </ParallaxBanner>
-                <Grid item xs={12} className={classes.typedMiniGrid}></Grid>
+                <Grid item xs={12} className={classes.typedMiniGrid}>
+                    <Typed
+                        strings={["Güzelliginize güzellik katın..."]}
+                        typeSpeed={100}
+                        backSpeed={100}
+                        loop
+                    />
+                </Grid>
             </Grid>
 
             <Grid container className={classes.firstSection}>
