@@ -56,13 +56,6 @@ const useStyles = {
             maxWidth: "50rem",
         },
     },
-
-    typedMiniGrid: {
-        display: "flex",
-        alignItems: "center",
-        height: "15vh",
-        padding: "0 5vw",
-    },
     gallerypageTitle: {
         textAlign: "center",
         borderBottom: "2px solid lightgray",

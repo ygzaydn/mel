@@ -15,7 +15,7 @@ const useStyles = ({ color }) => ({
     border: (props) => `2px solid ${props.color}`,
     padding: "2vh",
     width: "15vw",
-    minWidth:'250px',
+    minWidth: "250px",
     display: "flex",
     justifyContent: "space-around",
     height: "2rem",
@@ -29,9 +29,24 @@ const useStyles = ({ color }) => ({
 
 const SocialmediaGrid = ({ classes }) => (
   <Grid item xs={4} className={classes.socialMediaGrid}>
-    <InstagramIcon />
-    <FacebookIcon />
+    <Link
+      to={{ pathname: "https://www.instagram.com/mellguzellikmerkezi/?hl=tr" }}
+      target="_blank"
+    >
+      <InstagramIcon />
+    </Link>
+    <Link
+      to={{ pathname: "https://www.facebook.com/mellguzellikmerkezi" }}
+      target="_blank"
+    >
+      <FacebookIcon />
+    </Link>
+    <Link
+      to={{ pathname: "https://twitter.com/MellEstetik" }}
+      target="_blank"
+    >
     <TwitterIcon />
+    </Link>
   </Grid>
 );
 
