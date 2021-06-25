@@ -81,10 +81,11 @@ const Contactpage = ({ classes, limit, width }) => {
         </Grid>
       </Grid>
       <Grid item xs={12}>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d932.7204184526715!2d27.357373987723538!3d38.15681791896777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b95b3467965fbf%3A0x77a8a3fbe9fd722f!2zRXJ0dcSfcnVsLCBVxJ91ciBNdW1jdSBCbHYuIE5vOjIwLCAzNTg2MCBUb3JiYWzEsS_EsHptaXI!5e0!3m2!1str!2str!4v1624630930096!5m2!1str!2str" width="100%" height="600" style={{ border: 0 }}  allowfullscreen="" loading="lazy"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3137.28875989773!2d27.355907316096104!3d38.15672809786364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b95bd306ebbc21%3A0xbb341c0fe31a155e!2sMell%20G%C3%BCzellik%20Merkezi!5e0!3m2!1str!2str!4v1624649664253!5m2!1str!2str" width="100%" height="600" style={{ border: 0 }}  allowfullscreen="" loading="lazy"></iframe>
       </Grid>
     </Grid>
   );
+
 };
 
 export default compose(withWindowConsumer, withStyles(useStyles))(Contactpage);
