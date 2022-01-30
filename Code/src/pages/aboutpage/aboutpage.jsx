@@ -5,7 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 import { compose } from "recompose";
 import { withWindowConsumer } from "../../contexts/window/consumer";
-import AboutpageBackground from "../../assets/images/pexel4.jpg";
+import AboutpageBackground from "../../assets/images/pexel8.jpg";
 import Typed from "react-typed";
 
 const useStyles = {

@@ -18,6 +18,7 @@ import images from "../../components/galleryImageGetter";
 
 import ImageGallery from "react-image-gallery";
 import StatsItem from "../../components/statsItem";
+import Testimonials from "../../components/testimonial";
 import "react-image-gallery/styles/css/image-gallery.css";
 
 const services = [
@@ -103,7 +104,7 @@ const useStyles = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-
+    marginTop: (props) => (props.width < props.limit ? "5rem" : null),
     "& img": {
       height: "30rem",
       maxWidth: "30rem",
@@ -111,7 +112,9 @@ const useStyles = {
   },
 
   hexagonalGrid: {
+    height: (props) => (props.width < props.limit ? "null" : "100%"),
     display: "flex",
+    flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     marginBottom: "2vh",
@@ -261,7 +264,20 @@ const Homepage = ({ classes, limit, width }) => {
         className={classes.thirdSection}
       >
         <Grid item xs={12} md={6} className={classes.hexagonalGrid}>
-          <img src={Hexagonal} alt="hexagonal" />
+          <Typography
+            color="primary"
+            variant="h3"
+            gutterBottom
+            style={{
+              marginBottom: "2vh",
+              borderBottom: "2px solid lightgray",
+              textAlign: "center",
+              padding: "1vh 0",
+            }}
+          >
+            Müşterilerimiz
+          </Typography>
+          <Testimonials />
         </Grid>
         <Grid item xs={12} md={6} className={classes.galleryGrid}>
           <Typography
@@ -296,6 +312,17 @@ const Homepage = ({ classes, limit, width }) => {
             </Typography>
           </Link>
         </Grid>
+      </Grid>
+      <Grid item xs={12}>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3137.28875989773!2d27.355907316096104!3d38.15672809786364!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14b95bd306ebbc21%3A0xbb341c0fe31a155e!2sMell%20G%C3%BCzellik%20Merkezi!5e0!3m2!1str!2str!4v1624649664253!5m2!1str!2str"
+          width="100%"
+          height="600"
+          style={{ border: 0 }}
+          allowfullscreen=""
+          loading="lazy"
+          title="map"
+        ></iframe>
       </Grid>
     </Grid>
   );

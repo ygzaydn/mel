@@ -20,7 +20,7 @@ const useStyles = {
     backgroundImage: `linear-gradient(to right, #000000a0, #000000a0), url(${ContactpageBackground})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
-    backgroundPosition: "center",
+    backgroundPosition: "top",
     fontFamily: "'Dancing Script', cursive",
     "& span": {
       color: "lightgray",

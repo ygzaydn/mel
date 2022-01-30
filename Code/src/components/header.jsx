@@ -12,21 +12,23 @@ import { withStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import { compose } from "recompose";
 import { withWindowConsumer } from "../contexts/window/consumer";
-import Logo from "../assets/images/logo.jpeg";
+import Logo from "../assets/images/backgroundGone.png";
 
 import { SocialmediaGrid } from "../components";
 import MenuIcon from "@material-ui/icons/Menu";
+import { useEffect } from "react";
 
 const useStyles = () => ({
   headerGrid: {
-    backgroundColor: "white",
+    backgroundColor: "transparent",
     position: "fixed",
     display: "flex",
     width: "100%",
     justifyContent: "space-around",
     alignItems: "center",
-    borderBottom: "2px solid #845EC2",
+    transition: "all .4s",
     zIndex: 50,
+    padding: "1rem 0",
   },
   headerMenuTexts: {
     marginTop: "1rem",
@@ -62,7 +64,9 @@ const useStyles = () => ({
   menuItem: {
     transition: "all 0.5s ",
     padding: "3px ",
+    color: "white",
     "&:hover": {
+      borderRadius: 20,
       color: "white",
       backgroundColor: "#845EC2",
       padding: "3px 1rem",
@@ -87,6 +91,7 @@ const useStyles = () => ({
 
 const Header = ({ classes, loggedUser, width, limit }) => {
   const [anchorEl, setAnchorEl] = useState(null);
+  const [color, setColor] = useState("white");
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -95,8 +100,34 @@ const Header = ({ classes, loggedUser, width, limit }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  //borderBottom: "2px solid #845EC2",
+
+  const changeStyle = () => {
+    const headerContainer = document.getElementById("headerContainer");
+    const style = headerContainer.style;
+    let yOffset = window.pageYOffset;
+    if (headerContainer && style) {
+      if (yOffset > 0) {
+        style.backgroundColor = "white";
+        style.borderBottom = "2px solid #845EC2";
+        setColor("#845EC2");
+      } else {
+        style.backgroundColor = "transparent";
+        style.borderBottom = "none";
+        setColor("white");
+      }
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => changeStyle());
+    return () => {
+      window.removeEventListener("scroll", () => changeStyle());
+    };
+  }, []);
+
   return (
-    <Grid container className={classes.headerGrid}>
+    <Grid container className={classes.headerGrid} id="headerContainer">
       <Grid item xs={12} className={classes.headerSemi}>
         <Grid item xs={6} md={2} className={classes.headerLogo}>
           <Link to="/" style={{ textDecoration: "none" }}>
@@ -124,6 +155,7 @@ const Header = ({ classes, loggedUser, width, limit }) => {
                       color="primary"
                       variant="h6"
                       className={classes.menuItem}
+                      style={{ color: "#845EC2" }}
                     >
                       Anasayfa
                     </Typography>
@@ -135,6 +167,7 @@ const Header = ({ classes, loggedUser, width, limit }) => {
                       color="primary"
                       variant="h6"
                       className={classes.menuItem}
+                      style={{ color: "#845EC2" }}
                     >
                       Hakkımızda
                     </Typography>
@@ -147,6 +180,7 @@ const Header = ({ classes, loggedUser, width, limit }) => {
                       color="primary"
                       variant="h6"
                       className={classes.menuItem}
+                      style={{ color: "#845EC2" }}
                     >
                       Hizmetlerimiz
                     </Typography>
@@ -158,6 +192,7 @@ const Header = ({ classes, loggedUser, width, limit }) => {
                       color="primary"
                       variant="h6"
                       className={classes.menuItem}
+                      style={{ color: "#845EC2" }}
                     >
                       Galeri
                     </Typography>
@@ -169,6 +204,7 @@ const Header = ({ classes, loggedUser, width, limit }) => {
                       color="primary"
                       variant="h6"
                       className={classes.menuItem}
+                      style={{ color: "#845EC2" }}
                     >
                       İletişim
                     </Typography>
@@ -191,36 +227,36 @@ const Header = ({ classes, loggedUser, width, limit }) => {
                 <Breadcrumbs separator="|" aria-label="breadcrumb">
                   <Link to="/" style={{ textDecoration: "none" }}>
                     <Typography
-                      color="primary"
                       variant="h6"
                       className={classes.menuItem}
+                      style={{ color }}
                     >
                       Anasayfa
                     </Typography>
                   </Link>
                   <Link to="/hakkimizda" style={{ textDecoration: "none" }}>
                     <Typography
-                      color="primary"
                       variant="h6"
                       className={classes.menuItem}
+                      style={{ color }}
                     >
                       Hakkımızda
                     </Typography>
                   </Link>
                   <Link to="/hizmetlerimiz" style={{ textDecoration: "none" }}>
                     <Typography
-                      color="primary"
                       variant="h6"
                       className={classes.menuItem}
+                      style={{ color }}
                     >
                       Hizmetlerimiz
                     </Typography>
                   </Link>
                   <Link to="/galeri" style={{ textDecoration: "none" }}>
                     <Typography
-                      color="primary"
                       variant="h6"
                       className={classes.menuItem}
+                      style={{ color }}
                     >
                       Galeri
                     </Typography>
@@ -228,9 +264,9 @@ const Header = ({ classes, loggedUser, width, limit }) => {
 
                   <Link to="/iletisim" style={{ textDecoration: "none" }}>
                     <Typography
-                      color="primary"
                       variant="h6"
                       className={classes.menuItem}
+                      style={{ color }}
                     >
                       İletişim
                     </Typography>
@@ -238,7 +274,7 @@ const Header = ({ classes, loggedUser, width, limit }) => {
                 </Breadcrumbs>
               </Grid>
               <Grid item xs={12} className={classes.socialMediaBigGrid}>
-                <SocialmediaGrid color="#845EC2" />
+                <SocialmediaGrid color={color} />
               </Grid>
             </Grid>
           )}

@@ -112,6 +112,7 @@ const Gallerypage = ({ classes, limit, width }) => {
           autoPlay
           showBullets
           items={myImages}
+          useBrowserFullscreen={false}
         />
       </Grid>
     </Grid>

@@ -17,7 +17,6 @@ const useStyles = () => ({
     padding: "10vh 0",
     justifyContent: "center",
     alignItems: "center",
-    clipPath: "polygon(0 3%, 100% 0, 100% 100%, 0% 100%)",
   },
   footerInfo: {
     padding: "4rem 2rem 1rem 2rem",
