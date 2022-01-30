@@ -12,7 +12,6 @@ import { withWindowConsumer } from "../contexts/window/consumer";
 
 const useStyles = ({ color }) => ({
   socialMediaGrid: {
-    border: (props) => `2px solid ${props.color}`,
     padding: "2vh",
     width: "15vw",
     minWidth: "250px",
@@ -23,6 +22,10 @@ const useStyles = ({ color }) => ({
     "& svg": {
       color: (props) => ` ${props.color}`,
       cursor: "pointer",
+      transition: "all .4s",
+      "&:hover": {
+        color: "#D65DB1",
+      },
     },
   },
 });
@@ -41,11 +44,8 @@ const SocialmediaGrid = ({ classes }) => (
     >
       <FacebookIcon />
     </Link>
-    <Link
-      to={{ pathname: "https://twitter.com/MellEstetik" }}
-      target="_blank"
-    >
-    <TwitterIcon />
+    <Link to={{ pathname: "https://twitter.com/MellEstetik" }} target="_blank">
+      <TwitterIcon />
     </Link>
   </Grid>
 );

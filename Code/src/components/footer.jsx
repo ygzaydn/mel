@@ -12,16 +12,15 @@ import { SocialmediaGrid, InformationGrid } from "./";
 const useStyles = () => ({
   footerGrid: {
     background: "linear-gradient(#845EC2, black)",
-    borderTop: "2px solid lightgray",
     display: "flex",
     minHeight: "50vh",
     padding: "10vh 0",
     justifyContent: "center",
-    alignItems:'center',
+    alignItems: "center",
+    clipPath: "polygon(0 3%, 100% 0, 100% 100%, 0% 100%)",
   },
   footerInfo: {
-    padding: "1vh 3vw",
-    width: (props) => (props.width < props.limit ? null : "75%"),
+    padding: "4rem 2rem 1rem 2rem",
     margin: "auto",
     minHeight: "50%",
     display: "flex",
@@ -30,8 +29,7 @@ const useStyles = () => ({
     alignItems: "center",
   },
   socialMediaFooterGrid: {
-    padding: "1vh 3vw",
-    width: "75%",
+    padding: "1rem 2rem",
     margin: "auto",
     minHeight: (props) => (props.width < props.limit ? null : "50%"),
     display: "flex",
@@ -40,27 +38,57 @@ const useStyles = () => ({
   },
   footerSemi: {
     display: "flex",
-    justifyContent:'center',
-    alignItems:'center',
+    justifyContent: "center",
+    alignItems: "center",
     maxWidth: "1600px",
     flexDirection: (props) => (props.width < props.limit ? "column" : null),
+  },
+  menuItem: {
+    transition: "all .4s",
+    "&:hover": {
+      color: "white",
+    },
+  },
+  readMoreText: {
+    textAlign: "center",
+    marginBottom: "1vh",
+    color: "#D65DB1",
+    transition: "all .4s",
+    "&:hover": {
+      color: "white",
+    },
   },
 });
 
 const Footer = ({ classes }) => {
   return (
-    <Grid container className={classes.footerGrid} justify="center" alignItems="center">
+    <Grid
+      container
+      className={classes.footerGrid}
+      justify="center"
+      alignItems="center"
+    >
       <Grid item xs={12} className={classes.footerSemi}>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={4}>
           <Grid item xs={12} className={classes.footerInfo}>
             <Typography
               color="error"
               variant="h5"
-              style={{ textAlign: "center", marginBottom: "1vh" }}
+              style={{
+                textAlign: "center",
+                marginBottom: "4vh",
+                color: "#D65DB1",
+              }}
             >
               Salonumuz hakkında
             </Typography>
-            <Typography color="error" variant="subtitle1">
+            <Typography
+              color="error"
+              variant="subtitle1"
+              style={{
+                marginBottom: "1vh",
+              }}
+            >
               İzmir Mell Güzellik Salonu, müşteri memnuniyetini ilke edinmiş,
               sizin her konuda konforunuzu amaçlayan salonuyla, her türlü
               memnuniyetinizi amaçlayan kadrosu ile birlikte ziyaretinizi
@@ -70,25 +98,20 @@ const Footer = ({ classes }) => {
               <Typography
                 color="error"
                 variant="subtitle2"
-                style={{ textAlign: "center", marginBottom: "1vh" }}
+                className={classes.readMoreText}
               >
                 Daha fazlası...
               </Typography>
             </Link>
           </Grid>
+        </Grid>
+        <Grid item xs={12} md={6}>
           <Grid item xs={12} className={classes.footerInfo}>
             <InformationGrid color="white" />
           </Grid>
         </Grid>
-        <Grid item xs={12} md={6}>
+        <Grid item xs={12} md={2}>
           <Grid item xs={12} className={classes.footerInfo}>
-            <Typography
-              color="error"
-              variant="h6"
-              style={{ textAlign: "center" }}
-            >
-              Hızlı Erişim
-            </Typography>
             <Link to="/" style={{ textDecoration: "none" }}>
               <Typography
                 color="secondary"

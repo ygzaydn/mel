@@ -19,15 +19,17 @@ import MenuIcon from "@material-ui/icons/Menu";
 
 const useStyles = () => ({
   headerGrid: {
-    height: "8vh",
     backgroundColor: "white",
+    position: "fixed",
     display: "flex",
+    width: "100%",
     justifyContent: "space-around",
-    padding: "2vh 0",
     alignItems: "center",
+    borderBottom: "2px solid #845EC2",
+    zIndex: 50,
   },
   headerMenuTexts: {
-    marginBottom: "1rem",
+    marginTop: "1rem",
     display: "flex",
     justifyContent: (props) =>
       props.width < props.limit ? "flex-end" : "space-around",
@@ -63,6 +65,7 @@ const useStyles = () => ({
     "&:hover": {
       color: "white",
       backgroundColor: "#845EC2",
+      padding: "3px 1rem",
     },
   },
   headerSemi: {
@@ -93,7 +96,7 @@ const Header = ({ classes, loggedUser, width, limit }) => {
     setAnchorEl(null);
   };
   return (
-    <Grid containter className={classes.headerGrid}>
+    <Grid container className={classes.headerGrid}>
       <Grid item xs={12} className={classes.headerSemi}>
         <Grid item xs={6} md={2} className={classes.headerLogo}>
           <Link to="/" style={{ textDecoration: "none" }}>
@@ -174,7 +177,16 @@ const Header = ({ classes, loggedUser, width, limit }) => {
               </Menu>
             </Grid>
           ) : (
-            <Grid item xs={12}>
+            <Grid
+              item
+              xs={12}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
               <Grid item xs={12} className={classes.headerMenuTexts}>
                 <Breadcrumbs separator="|" aria-label="breadcrumb">
                   <Link to="/" style={{ textDecoration: "none" }}>

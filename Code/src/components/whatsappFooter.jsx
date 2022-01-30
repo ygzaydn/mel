@@ -3,7 +3,6 @@ import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 import { withStyles } from "@material-ui/core/styles";
 
-import { Link } from "react-router-dom";
 import { compose } from "recompose";
 import { withWindowConsumer } from "../contexts/window/consumer";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
@@ -20,6 +19,7 @@ const useStyles = () => ({
     width: "max(15vw,225px)",
     background: "green",
     cursor: "pointer",
+    zIndex: 50,
     "& svg": {
       color: "white",
       height: "60%",
@@ -30,7 +30,16 @@ const useStyles = () => ({
 
 const WhatsappFooter = ({ classes, width, limit }) => {
   return (
-    <Grid item className={classes.footerContainer}>
+    <Grid
+      item
+      className={classes.footerContainer}
+      onClick={() =>
+        window.open(
+          "https://api.whatsapp.com/send/?phone=905070352992",
+          "_blank"
+        )
+      }
+    >
       <WhatsAppIcon />
       <Typography style={{ color: "white" }} variant="subtitle1">
         Whattsap'tan bize ulaşın
